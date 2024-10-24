@@ -1,23 +1,13 @@
-"use client";
-
 export default function Home() {
-  const getFn = async () => {
-    const res = await fetch("/api/test", {
-      method: "POST",
-      body: JSON.stringify({
-        name: "Jane",
-        password: "1234",
-      }),
-    });
-    console.log(await res.json());
+  const handleForm = async (formData: FormData) => {
+    "use server";
+    console.log("password :", formData.get("password"));
   };
-
   return (
     <main>
-      <form action="">
-        <input type="text" />
+      <form action={handleForm}>
+        <input type="text" placeholder="password" name="password" />
         <button>submit</button>
-        <span onClick={getFn}>onclick</span>
       </form>
     </main>
   );
