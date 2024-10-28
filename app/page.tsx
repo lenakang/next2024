@@ -7,6 +7,7 @@ export default function Home() {
     await new Promise((res) => setTimeout(res, 5000));
     console.log("password :", formData.get("password"));
   };
+
   return (
     <main>
       <form action={handleForm}>

@@ -7,11 +7,7 @@ interface InputProps {
   errors?: string[];
 }
 
-export default function Input({
-  name,
-  errors = [],
-  ...rest
-}: InputProps & InputHTMLAttributes<HTMLInputElement>) {
+export default function Input({ name, errors = [], ...rest }: InputProps) {
   return (
     <div className="flex flex-col gap-2">
       <input
