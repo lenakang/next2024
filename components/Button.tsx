@@ -4,13 +4,17 @@ import { useFormStatus } from "react-dom";
 
 interface IButton {
   text: string;
+  size?: "sm" | "md" | "lg";
 }
 
-export default function Button({ text }: IButton) {
+export default function Button({ text, size = "md" }: IButton) {
   const { pending } = useFormStatus();
+  const textSize =
+    size === "sm" ? "text-sm" : size === "lg" ? "h-11 text-lg" : "";
+
   return (
-    <button className="btn-primary" disabled={pending}>
-      {text}
+    <button className={`btn-primary ${textSize}`} disabled={pending}>
+      {pending ? "Loading..." : text}
     </button>
   );
 }
