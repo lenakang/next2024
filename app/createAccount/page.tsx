@@ -10,6 +10,8 @@ import Link from "next/link";
 export default function CreateAccount() {
   const [state, action] = useActionState(handleForm, null as any);
 
+  console.log("state", state);
+
   return (
     <div className="min-h-screen px-4 py-6">
       <Link href="/" className="inline-block mb-2 transform -translate-x-1">
@@ -20,13 +22,29 @@ export default function CreateAccount() {
         <h2>회원가입 또는 소셜 아이디로 로그인 해주세요.</h2>
       </div>
       <form action={action} className="w-full flex flex-col gap-2">
-        <Input placeholder="이름" type="text" name="name" />
-        <Input placeholder="이메일" type="email" name="email" />
-        <Input placeholder="비밀번호" type="password" name="password" />
+        <Input
+          placeholder="이름"
+          type="text"
+          name="name"
+          errors={state?.name}
+        />
+        <Input
+          placeholder="이메일"
+          type="email"
+          name="email"
+          errors={state?.email}
+        />
+        <Input
+          placeholder="비밀번호"
+          type="password"
+          name="password"
+          errors={state?.password}
+        />
         <Input
           placeholder="비밀번호 확인"
           type="password"
           name="passwordConfirm"
+          errors={state?.passwordConfirm}
         />
         <Button text="회원가입" size="lg" />
       </form>

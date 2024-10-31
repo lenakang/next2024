@@ -19,11 +19,8 @@ export default function Input({
         className="bg-transparent rounded-md w-full h-10 focus:outline-none transition ring-neutral-200 focus:ring-black placeholder:text-neutral-400 px-2 border border-gray focus:border-black"
         {...rest}
       />
-      {errors.map((error, index) => (
-        <span key={index} className="text-red-500 font-medium">
-          {error}
-        </span>
-      ))}
+
+      <span className="text-red-500 font-medium">{errors[0]}</span>
     </div>
   );
 }
