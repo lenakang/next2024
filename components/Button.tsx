@@ -1,5 +1,3 @@
-"use client";
-
 interface IButton {
     text: string;
     size?: "sm" | "md" | "lg";
