@@ -8,7 +8,7 @@ import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
 export default function CreateAccount() {
-    const [state, action, pending] = useActionState(handleForm, null as any);
+    const [state, dispatch, pending] = useActionState(handleForm, null as any);
 
     return (
         <div className="min-h-screen px-4 py-6">
@@ -22,7 +22,7 @@ export default function CreateAccount() {
                 <h1 className="text-2xl font-bold mb-2">안녕하세요!</h1>
                 <h2>회원가입 또는 소셜 아이디로 로그인 해주세요.</h2>
             </div>
-            <form action={action} className="w-full flex flex-col gap-2">
+            <form action={dispatch} className="w-full flex flex-col gap-2">
                 <Input
                     placeholder="이름"
                     type="text"

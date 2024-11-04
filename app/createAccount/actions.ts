@@ -5,14 +5,6 @@ import { z } from "zod";
 export const handleForm = async (prevState: any, formData: FormData) => {
     await new Promise((res) => setTimeout(res, 300));
 
-    const checkPassword = ({
-        password,
-        passwordConfirm,
-    }: {
-        password: string;
-        passwordConfirm: string;
-    }) => password === passwordConfirm;
-
     // 순서대로 에러 메세지 나옴
     const schema = z
         .object({
@@ -59,9 +51,10 @@ export const handleForm = async (prevState: any, formData: FormData) => {
         passwordConfirm: formData.get("passwordConfirm"),
     };
     const result = schema.safeParse(data);
-    if (result.success) {
-        console.log("통과", result.data);
-    } else {
+
+    if (!result.success) {
         return result.error.flatten().fieldErrors;
+    } else {
+        console.log("통과", result.data);
     }
 };
