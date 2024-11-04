@@ -6,9 +6,14 @@ import { handleForm } from "./actions";
 import { useActionState } from "react";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
 
 export default function CreateAccount() {
-    const [state, dispatch, pending] = useActionState(handleForm, null as any);
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({});
 
     return (
         <div className="min-h-screen px-4 py-6">
@@ -22,30 +27,38 @@ export default function CreateAccount() {
                 <h1 className="text-2xl font-bold mb-2">안녕하세요!</h1>
                 <h2>회원가입 또는 소셜 아이디로 로그인 해주세요.</h2>
             </div>
-            <form action={dispatch} className="w-full flex flex-col gap-2">
+            <form className="w-full flex flex-col gap-2">
                 <Input
                     placeholder="이름"
                     type="text"
-                    name="name"
-                    errors={state?.name}
+                    {...register("name", {
+                        required: true,
+                    })}
+                    errors={errors?.name}
                 />
                 <Input
                     placeholder="이메일"
                     type="email"
-                    name="email"
-                    errors={state?.email}
+                    {...register("email", {
+                        required: true,
+                    })}
+                    errors={errors?.email}
                 />
                 <Input
                     placeholder="비밀번호"
                     type="password"
-                    name="password"
-                    errors={state?.password}
+                    {...register("password", {
+                        required: true,
+                    })}
+                    errors={errors?.password}
                 />
                 <Input
                     placeholder="비밀번호 확인"
                     type="password"
-                    name="passwordConfirm"
-                    errors={state?.passwordConfirm}
+                    {...register("passwordConfirm", {
+                        required: true,
+                    })}
+                    errors={errors?.passwordConfirm}
                 />
                 <Button text="회원가입" size="lg" pending={pending} />
             </form>
