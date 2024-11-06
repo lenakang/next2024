@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-  .btn-primary{
-    @apply w-full bg-primary h-10 text-white rounded-md disabled:bg-neutral-400 disabled:cursor-not-allowed flex justify-center items-center font-medium
-  }
+    .btn-primary {
+        @apply w-full bg-primary h-10 text-white rounded-md disabled:bg-neutral-400 disabled:cursor-not-allowed flex justify-center items-center font-medium;
+    }
 }
